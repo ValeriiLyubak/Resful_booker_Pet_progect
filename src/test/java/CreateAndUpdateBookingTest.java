@@ -1,50 +1,64 @@
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import models.BookingRequest;
+import models.BookingResponse;
+import models.CreateBookingResponse;
 import org.testng.annotations.Test;
+
+import static api.RestfulBookerApi.createBooking;
+import static api.RestfulBookerApi.updateBooking;
+import static io.qameta.allure.Allure.step;
+import static org.testng.AssertJUnit.*;
+import static io.restassured.http.ContentType.JSON;
+import static spec.RestfulSpec.baseRequestSpecification;
+import static io.restassured.RestAssured.given;
 
 @Epic("API tests for restful-booker")
 @Feature("Create and update booking")
-public class CreateAndUpdateBookingTests extends TestBase {
-
-    @Test
+@Test(groups = "api")
+public class CreateAndUpdateBookingTest extends Base {
+    @Test(description = "Successful create a new booking")
     public void successfulCreateNewBooking() {
-        BookingRequestModel bookingRequestModel = testData.createBookingRequestModel();
+        BookingRequest bookingRequest = testData.createBookingRequest();
 
-        CreateBookingResponseModel response = step("Make create booking request", () ->
-                createBooking(bookingRequestModel, token));
+        CreateBookingResponse response = step("Make create booking request", () ->
+                createBooking(bookingRequest, token));
         step("Verify successful create new booking id", () ->
-                assertThat(response.getBookingId()).isNotNull());
+                assertNotNull(response.getBookingId()));
         step("Verify successful create new booking with request data", () ->
-                assertThat(response.getBookingRequestModel().equals(bookingRequestModel)));
+                assertTrue(response.getBookingRequest().equals(bookingRequest)));
     }
 
-    @Test
+    @Test(description = "Successful update booking data by id")
     public void successfulUpdateBooking() {
-        BookingRequestModel bookingRequestModel = testData.createBookingRequestModel();
-        int id = createBooking(bookingRequestModel, token).getBookingId();
-        BookingRequestModel newBookingRequestModel = testData.createBookingRequestModel();
+        BookingRequest bookingRequest = testData.createBookingRequest();
+        int id = createBooking(bookingRequest, token).getBookingId();
+        BookingRequest newBookingRequest = testData.createBookingRequest();
 
-        BookingResponseModel response = step("Make update all booking data request", () ->
-                updateBooking(newBookingRequestModel, token, id));
+        BookingResponse response = step("Make update all booking data request", () ->
+                updateBooking(newBookingRequest, token, id));
         step("Verify successful update firstname", () ->
-                assertThat(response.getFirstname()).isEqualTo(newBookingRequestModel.getFirstname()));
+                // Использую правильные методы для получения имени и фамилии
+                assertEquals(response.getFirstName(), newBookingRequest.getFirstName()));
         step("Verify successful update lastname", () ->
-                assertThat(response.getLastname()).isEqualTo(newBookingRequestModel.getLastname()));
+                assertEquals(response.getLastName(), newBookingRequest.getLastName()));
         step("Verify successful update total price", () ->
-                assertThat(response.getTotalPrice()).isEqualTo(newBookingRequestModel.getTotalPrice()));
+                assertEquals(response.getTotalPrice(), newBookingRequest.getTotalPrice()));
     }
 
-    @Test
+    @Test(description = "Unsuccessful update booking without auth token")
     public void UpdateBookingWithoutAuthTokenReturns403() {
-        BookingRequestModel bookingRequestModel = testData.createBookingRequestModel();
+        BookingRequest bookingRequest = testData.createBookingRequest();
 
         step("Make update data request without auth token and verify it returns status code 403", () ->
-                given(baseRequestSpec)
-                        .body(bookingRequestModel)
+                given(baseRequestSpecification)
+                        .body(bookingRequest)
                         .contentType(JSON)
                         .when()
                         .put("booking/7")
                         .then()
                         .assertThat().statusCode(403));
+
+
     }
 }

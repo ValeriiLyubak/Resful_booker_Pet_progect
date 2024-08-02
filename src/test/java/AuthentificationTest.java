@@ -27,7 +27,10 @@ public class AuthentificationTest {
 
     @Test
     public void createAuthentificationToken() {
-        AuthentificationRequest authentificationRequest = new AuthentificationRequest(configuration.username(), configuration.password());
+        AuthentificationRequest authentificationRequest = new AuthentificationRequest(
+                configuration.username(),
+                configuration.password()
+        );
 
         AuthentificationResponse response = step("Make token request with user data", () ->
                 RestfulBookerApi.createToken(authentificationRequest));
