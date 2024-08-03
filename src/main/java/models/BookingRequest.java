@@ -1,8 +1,7 @@
 package models;
 
-
-import io.qameta.allure.internal.shadowed.jackson.annotation.JsonIgnoreProperties;
-import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
@@ -11,7 +10,6 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class BookingRequest {
     String firstName, lastName;
 
@@ -26,8 +24,6 @@ public class BookingRequest {
 
     @JsonProperty("additionalneeds")
     String additionalNeeds;
-
-
-
 }
+
 
