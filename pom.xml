@@ -13,7 +13,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.4.0</version>
+            <version>7.10.2</version> <!-- Latest version -->
         </dependency>
 
         <!-- Selenium -->
@@ -27,27 +27,27 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>4.4.0</version>
+            <version>5.5.0</version> <!-- Latest version -->
         </dependency>
 
         <!-- Allure -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
-            <version>2.17.2</version>
+            <version>2.13.0</version> <!-- Latest version -->
         </dependency>
 
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-rest-assured</artifactId>
-            <version>2.17.2</version>
+            <version>2.13.0</version> <!-- Latest version -->
         </dependency>
 
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
+            <version>1.18.34</version> <!-- Latest version -->
             <scope>provided</scope>
         </dependency>
 
@@ -73,7 +73,7 @@
 
     <build>
         <plugins>
-            <!-- Compiler plugin configures the Java version and includes lombok as well. -->
+            <!-- Compiler plugin configures the Java version and includes Lombok as well. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -85,7 +85,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>${maven.compiler.source}</version>
+                            <version>1.18.34</version> <!-- Latest version -->
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
