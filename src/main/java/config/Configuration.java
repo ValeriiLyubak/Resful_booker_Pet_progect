@@ -2,7 +2,7 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources({"classpath:config/configurations.properties"})
+@Config.Sources({"classpath:configuration.properties"})
 
 public interface Configuration extends Config {
     @Key("baseUrl")

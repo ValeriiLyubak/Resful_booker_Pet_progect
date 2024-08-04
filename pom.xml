@@ -79,6 +79,16 @@
     </properties>
 
     <build>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+
         <plugins>
             <!-- Compiler plugin configures the Java version and includes Lombok as well. -->
             <plugin>

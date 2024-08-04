@@ -1,3 +1,9 @@
+///Установлен нулевой юрл
+///связка AuthTest->.....ResfulSpec
+///скорее всего будет ошибка и в пути для логина пароля
+
+
+
 import api.RestfulBookerApi;
 import config.Configuration;
 import io.qameta.allure.Epic;
