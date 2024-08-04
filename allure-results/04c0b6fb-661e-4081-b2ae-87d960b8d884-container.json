@@ -1,1 +1,0 @@
-{"uuid":"04c0b6fb-661e-4081-b2ae-87d960b8d884","name":"AuthentificationTest","children":["3a5ca829-ed4e-4d9a-b172-35cefcabfc0e"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1722794120436,"stop":1722794121701}],"afters":[],"start":1722794120311,"stop":1722794150835}
