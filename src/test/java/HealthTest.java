@@ -7,7 +7,6 @@ import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 import static spec.RestfulSpec.baseRequestSpecification;
 
-
 @Epic("API tests for restful-booker")
 @Feature("API health check")
 public class HealthTest {

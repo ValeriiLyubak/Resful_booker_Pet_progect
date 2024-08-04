@@ -1,13 +1,8 @@
-///Установлен нулевой юрл
-///связка AuthTest->.....ResfulSpec
-///скорее всего будет ошибка и в пути для логина пароля
-
-
-
 import api.RestfulBookerApi;
 import config.Configuration;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import models.AuthentificationRequest;
 import models.AuthentificationResponse;
@@ -29,6 +24,10 @@ public class AuthentificationTest {
     @BeforeClass
     public void setUp() {
         configuration = ConfigFactory.create(Configuration.class, System.getProperties());
+        System.out.println("Base URL: " + configuration.baseUrl());
+        System.out.println("Username: " + configuration.username());
+        RestAssured.baseURI = configuration.baseUrl();
+        RestAssured.filters(new AllureRestAssured());
     }
 
     @Test

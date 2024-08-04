@@ -58,7 +58,5 @@ public class CreateAndUpdateBookingTest extends Base {
                         .put("booking/7")
                         .then()
                         .assertThat().statusCode(403));
-
-
     }
 }

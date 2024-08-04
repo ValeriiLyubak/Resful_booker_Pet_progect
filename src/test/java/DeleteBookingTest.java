@@ -8,10 +8,9 @@ import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static spec.RestfulSpec.baseRequestSpecification;
 
-
 @Epic("API tests for restful-booker")
 @Feature("Delete booking")
-public class DeleteBookingTest extends Base{
+public class DeleteBookingTest extends Base {
     @Test(description = "Delete request returns status 201")
     public void deleteBookingReturns201() {
         BookingRequest bookingRequest = testData.createBookingRequest();
@@ -25,3 +24,4 @@ public class DeleteBookingTest extends Base{
                         .assertThat().statusCode(201));
     }
 }
+

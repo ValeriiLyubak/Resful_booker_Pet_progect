@@ -8,18 +8,17 @@ import static spec.RestfulSpec.baseRequestSpecification;
 import static spec.RestfulSpec.bookingRequestSpecification;
 import static org.testng.Assert.assertNotNull;
 
-
 public class GetBookingTest {
     @Test(description = "Get all booking ids returns status 200")
     public void getAllBookingsReturns200() {
         step("Make get all booking request and verify it returns status code 200", () ->
                 given(baseRequestSpecification)
-                     .when()
-                     .get("/booking")
-                     .then()
-                     .assertThat().statusCode(200));
-
+                        .when()
+                        .get("/booking")
+                        .then()
+                        .assertThat().statusCode(200));
     }
+
     @Test(description = "Get booking request returns not null data")
     public void getBookingReturnsNotNullData() {
         BookingResponse response = step("Make get data request by id", () ->
@@ -34,6 +33,4 @@ public class GetBookingTest {
         step("Verify successful get data request", () ->
                 assertNotNull(response.getFirstName(), "Firstname should not be null"));
     }
-
-
 }
