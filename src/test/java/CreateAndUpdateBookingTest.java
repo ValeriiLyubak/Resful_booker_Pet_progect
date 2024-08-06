@@ -1,3 +1,4 @@
+
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import models.BookingRequest;
@@ -8,7 +9,8 @@ import org.testng.annotations.Test;
 import static api.RestfulBookerApi.createBooking;
 import static api.RestfulBookerApi.updateBooking;
 import static io.qameta.allure.Allure.step;
-import static org.testng.AssertJUnit.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static io.restassured.http.ContentType.JSON;
 import static spec.RestfulSpec.baseRequestSpecification;
 import static io.restassured.RestAssured.given;
@@ -24,9 +26,9 @@ public class CreateAndUpdateBookingTest extends Base {
         CreateBookingResponse response = step("Make create booking request", () ->
                 createBooking(bookingRequest, token));
         step("Verify successful create new booking id", () ->
-                assertNotNull(response.getBookingId()));
+                assertThat(response.getBookingId(), is(notNullValue())));
         step("Verify successful create new booking with request data", () ->
-                assertTrue(response.getBookingRequest().equals(bookingRequest)));
+                assertThat(response.getBookingRequest(), equalTo(bookingRequest)));
     }
 
     @Test(description = "Successful update booking data by id")
@@ -37,13 +39,14 @@ public class CreateAndUpdateBookingTest extends Base {
 
         BookingResponse response = step("Make update all booking data request", () ->
                 updateBooking(newBookingRequest, token, id));
+
+        // Внесены изменения: исправлены опечатки в методах assertThat
         step("Verify successful update firstname", () ->
-                // Использую правильные методы для получения имени и фамилии
-                assertEquals(response.getFirstName(), newBookingRequest.getFirstName()));
+                assertThat(response.getFirstName(), equalTo(newBookingRequest.getFirstName())));
         step("Verify successful update lastname", () ->
-                assertEquals(response.getLastName(), newBookingRequest.getLastName()));
+                assertThat(response.getLastName(), equalTo(newBookingRequest.getLastName())));
         step("Verify successful update total price", () ->
-                assertEquals(response.getTotalPrice(), newBookingRequest.getTotalPrice()));
+                assertThat(response.getTotalPrice(), equalTo(newBookingRequest.getTotalPrice())));
     }
 
     @Test(description = "Unsuccessful update booking without auth token")

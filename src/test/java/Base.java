@@ -29,5 +29,6 @@ public class Base {
         AuthentificationRequest authentificationRequest = new AuthentificationRequest(configuration.username(), configuration.password());
         AuthentificationResponse response = RestfulBookerApi.createToken(authentificationRequest);
         token = response.getToken();
+        System.out.println("Generated token: " + token); // token check
     }
 }

@@ -5,8 +5,8 @@ import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static spec.RestfulSpec.baseRequestSpecification;
-import static spec.RestfulSpec.bookingRequestSpecification;
 import static org.testng.Assert.assertNotNull;
+import static spec.RestfulSpec.bookingResponseSpecification;
 
 public class GetBookingTest {
     @Test(description = "Get all booking ids returns status 200")
@@ -28,7 +28,7 @@ public class GetBookingTest {
                         .get("booking/8")
                         .then()
                         .statusCode(200)
-                        .spec(bookingRequestSpecification)
+                        .spec(bookingResponseSpecification)
                         .extract().as(BookingResponse.class));
         step("Verify successful get data request", () ->
                 assertNotNull(response.getFirstName(), "Firstname should not be null"));

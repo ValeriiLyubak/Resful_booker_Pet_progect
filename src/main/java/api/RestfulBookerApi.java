@@ -21,7 +21,7 @@ public class RestfulBookerApi {
 
     public static CreateBookingResponse createBooking(BookingRequest bookingRequest, String token) {
         return given(baseRequestSpecification)
-                .header("Cookie", "token" + token)
+                .header("Cookie", "token=" + token)
                 .contentType(JSON)
                 .body(bookingRequest)
                 .when()
@@ -34,14 +34,14 @@ public class RestfulBookerApi {
 
     public static BookingResponse updateBooking(BookingRequest bookingRequest, String token, int id) {
         return given(baseRequestSpecification)
-                .header("Cookie", "token" + token)
+                .header("Cookie", "token=" + token)
                 .contentType(JSON)
                 .body(bookingRequest)
                 .when()
-                .put("/booking" + id)
+                .put("/booking/" + id)
                 .then()
                 .statusCode(200)
-                .spec(bookingRequestSpecification)
+                .spec(bookingResponseSpecification)
                 .extract().as(BookingResponse.class);
     }
 

@@ -14,7 +14,6 @@ import static org.hamcrest.Matchers.notNullValue;
 public class RestfulSpec {
     static Configuration config = ConfigFactory.create(Configuration.class, System.getProperties());
     public static RequestSpecification baseRequestSpecification = with()
-            // **Удалено: кастомные настройки Allure**
             .filter(new io.qameta.allure.restassured.AllureRestAssured())
             .log().uri()
             .log().body()
@@ -33,7 +32,7 @@ public class RestfulSpec {
             .expectBody("booking", notNullValue())
             .build();
 
-    public static ResponseSpecification bookingRequestSpecification = new ResponseSpecBuilder()
+    public static ResponseSpecification bookingResponseSpecification = new ResponseSpecBuilder()
             .log(STATUS)
             .log(BODY)
             .expectBody("firstname", notNullValue())
