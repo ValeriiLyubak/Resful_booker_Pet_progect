@@ -28,7 +28,7 @@ public class TestData {
     public void getDates () {
         LocalDate checkInDate = generateRandomDate();
         LocalDate checkoutDate = checkInDate.plusDays(faker.number().numberBetween(1, 30));
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         setCheckin(checkInDate.format(dateTimeFormatter));
         setCheckout(checkoutDate.format(dateTimeFormatter));
     }
@@ -50,8 +50,8 @@ public class TestData {
         getDates();
 
         return BookingRequest.builder()
-                .firstName(firstName)
-                .lastName(lastName)
+                .firstname(firstName)
+                .lastname(lastName)
                 .totalPrice(totalPrice)
                 .depositPaid(depositPaid)
                 .bookingDates(new BookingDates(checkin, checkout))

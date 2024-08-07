@@ -11,7 +11,11 @@ import lombok.extern.jackson.Jacksonized;
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingRequest {
-    String firstName, lastName;
+    @JsonProperty("firstname")
+    String firstname;
+
+    @JsonProperty("lastname")
+    String lastname;
 
     @JsonProperty("totalprice")
     int totalPrice;

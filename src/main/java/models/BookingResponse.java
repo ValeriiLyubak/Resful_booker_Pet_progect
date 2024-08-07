@@ -7,7 +7,11 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingResponse {
-    String firstName, lastName;
+    @JsonProperty("firstname")
+    private String firstName;
+
+    @JsonProperty("lastname")
+    private String lastName;
 
     @JsonProperty("totalprice")
     int totalPrice;

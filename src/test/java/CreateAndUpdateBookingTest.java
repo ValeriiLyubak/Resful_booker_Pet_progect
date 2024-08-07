@@ -31,6 +31,9 @@ public class CreateAndUpdateBookingTest extends Base {
                 assertThat(response.getBookingRequest(), equalTo(bookingRequest)));
     }
 
+
+
+    ///не идет id
     @Test(description = "Successful update booking data by id")
     public void successfulUpdateBooking() {
         BookingRequest bookingRequest = testData.createBookingRequest();
@@ -40,11 +43,10 @@ public class CreateAndUpdateBookingTest extends Base {
         BookingResponse response = step("Make update all booking data request", () ->
                 updateBooking(newBookingRequest, token, id));
 
-        // Внесены изменения: исправлены опечатки в методах assertThat
         step("Verify successful update firstname", () ->
-                assertThat(response.getFirstName(), equalTo(newBookingRequest.getFirstName())));
+                assertThat(response.getFirstName(), equalTo(newBookingRequest.getFirstname())));
         step("Verify successful update lastname", () ->
-                assertThat(response.getLastName(), equalTo(newBookingRequest.getLastName())));
+                assertThat(response.getLastName(), equalTo(newBookingRequest.getLastname())));
         step("Verify successful update total price", () ->
                 assertThat(response.getTotalPrice(), equalTo(newBookingRequest.getTotalPrice())));
     }

@@ -12,5 +12,6 @@ import lombok.extern.jackson.Jacksonized;
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingDates {
-    String checkin, checkout;
+    String checkin;
+    String checkout;
 }
