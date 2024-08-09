@@ -11,6 +11,7 @@ import static io.restassured.filter.log.LogDetail.BODY;
 import static io.restassured.filter.log.LogDetail.STATUS;
 import static org.hamcrest.Matchers.notNullValue;
 
+
 public class RestfulSpec {
     static Configuration config = ConfigFactory.create(Configuration.class, System.getProperties());
     public static RequestSpecification baseRequestSpecification = with()
