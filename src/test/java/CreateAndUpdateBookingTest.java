@@ -1,6 +1,7 @@
 
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
 import models.BookingRequest;
 import models.BookingResponse;
 import models.CreateBookingResponse;
@@ -20,6 +21,7 @@ import static io.restassured.RestAssured.given;
 @Test(groups = "api")
 public class CreateAndUpdateBookingTest extends Base {
     @Test(description = "Successful create a new booking")
+    @Step("Successful create a new booking test.")
     public void successfulCreateNewBooking() {
         BookingRequest bookingRequest = testData.createBookingRequest();
 
@@ -33,8 +35,8 @@ public class CreateAndUpdateBookingTest extends Base {
 
 
 
-    ///не идет id
     @Test(description = "Successful update booking data by id")
+    @Step("Successful update booking data by id test.")
     public void successfulUpdateBooking() {
         BookingRequest bookingRequest = testData.createBookingRequest();
         int id = createBooking(bookingRequest, token).getBookingId();

@@ -2,6 +2,7 @@ import api.RestfulBookerApi;
 import config.Configuration;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import models.AuthentificationRequest;
@@ -31,6 +32,7 @@ public class AuthentificationTest {
     }
 
     @Test
+    @Step("Create authentication token test.")
     public void createAuthentificationToken() {
         AuthentificationRequest authentificationRequest = new AuthentificationRequest(
                 configuration.username(),

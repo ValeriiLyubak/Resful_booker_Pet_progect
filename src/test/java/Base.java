@@ -1,6 +1,7 @@
 
 import api.RestfulBookerApi;
 import config.Configuration;
+import io.qameta.allure.Step;
 import models.AuthentificationRequest;
 import models.AuthentificationResponse;
 import org.aeonbits.owner.ConfigFactory;
@@ -25,6 +26,7 @@ public class Base {
     }
 
     @BeforeMethod
+    @Step("Create authentication token")
     public void createAuthToken() {
         AuthentificationRequest authentificationRequest = new AuthentificationRequest(configuration.username(), configuration.password());
         AuthentificationResponse response = RestfulBookerApi.createToken(authentificationRequest);

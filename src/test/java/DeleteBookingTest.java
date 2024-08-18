@@ -1,5 +1,6 @@
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
 import models.BookingRequest;
 import org.testng.annotations.Test;
 
@@ -12,6 +13,7 @@ import static spec.RestfulSpec.baseRequestSpecification;
 @Feature("Delete booking")
 public class DeleteBookingTest extends Base {
     @Test(description = "Delete request returns status 201")
+    @Step("Delete request test.")
     public void deleteBookingReturns201() {
         BookingRequest bookingRequest = testData.createBookingRequest();
         int id = createBooking(bookingRequest, token).getBookingId();

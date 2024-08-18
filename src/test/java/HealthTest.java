@@ -11,6 +11,7 @@ import static spec.RestfulSpec.baseRequestSpecification;
 @Feature("API health check")
 public class HealthTest {
     @Test(description = "Health check endpoint to confirm the API is up")
+    @Step("Health check test.")
     public void healthTestReturns201() {
         makeHealthTestRequestAndVerifyStatusCode();
     }
