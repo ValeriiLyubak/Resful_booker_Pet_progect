@@ -1,6 +1,0 @@
-"BROKEN","EPIC","FAILED","FEATURE","PASSED","SKIPPED","STORY","UNKNOWN"
-"0","API tests for restful-booker","0","API health check","1","0","","0"
-"0","API tests for restful-booker","0","Get booking","2","0","","0"
-"0","API tests for restful-booker","0","Authentification token","1","0","","0"
-"0","API tests for restful-booker","0","Delete booking","1","0","","0"
-"0","API tests for restful-booker","0","Create and update booking","3","0","","0"
